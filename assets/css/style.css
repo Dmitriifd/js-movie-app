@@ -142,10 +142,14 @@ body {
   #REUSED STYLE
 \*-----------------------------------*/
 
-.search-wrapper::before {
-  position: absolute;
-  top: 14px;
-  right: 12px;
+.search-wrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+.search-wrapper::before,
+.load-more::before {
+  display: none;
   content: '';
   width: 20px;
   height: 20px;
@@ -153,10 +157,33 @@ body {
   border-radius: var(--radius-24);
   border-inline-end-color: transparent;
   animation: loading 500ms linear infinite;
-  display: none;
+}
+
+.search-wrapper::before {
+  position: absolute;
+  top: 14px;
+  right: 12px;
 }
 
 .search-wrapper.searching::before {
+  display: block;
+}
+
+.search-wrapper.searching::before {
+  display: block;
+}
+
+.load-more {
+  background-color: var(--primary-variant);
+  margin-inline: auto;
+  margin-block: 36px 60px;
+}
+
+.load-more:is(:hover, :focus-visible) {
+  --primary-variant: hsla(350, 67%, 39%, 1);
+}
+
+.load-more.loading::before {
   display: block;
 }
 
@@ -449,11 +476,6 @@ body {
   display: flex;
 }
 
-.search-wrapper {
-  position: relative;
-  flex-grow: 1;
-}
-
 .search-field {
   background-color: var(--banner-background);
   height: 48px;
@@ -473,7 +495,7 @@ body {
   padding-inline-start: 16px;
 }
 
-.search-wrapper .leading-icon {
+.search-wrapper .loading-icon {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -482,7 +504,7 @@ body {
   transition: var(--transition-short);
 }
 
-.search-wrapper:focus-within .leading-icon {
+.search-wrapper:focus-within .loading-icon {
   opacity: 0;
 }
 
@@ -776,11 +798,24 @@ body {
   min-width: 112px;
 }
 
-
-
 /*-----------------------------------*\
   #MOVIE LIST PAGE
 \*-----------------------------------*/
+
+.genre-list .title-wrapper {
+  margin-block-end: 56px;
+}
+
+.grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  column-gap: 16px;
+  row-gap: 20px;
+}
+
+:is(.genre-list, .search-modal) :is(.movie-card, .card-banner) {
+  width: 100%;
+}
 
 /*-----------------------------------*\
   #SEARCH MODAL
