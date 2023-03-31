@@ -170,6 +170,134 @@ body {
   }
 }
 
+.heading,
+.title-large,
+.title {
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.5px;
+}
+
+.title {
+  font-size: var(--fs-title);
+}
+.heading {
+  color: var(--white);
+  font-size: var(--fs-heading);
+  line-height: 1.2;
+}
+.title-large {
+  font-size: var(--fs-title-lg);
+  font-weight: var(--weight-bold);
+}
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.meta-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12;
+}
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.btn {
+  color: var(--white);
+  font-size: var(--fs-button);
+  font-weight: var(--weight-bold);
+  max-width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-block: 12px;
+  padding-inline: 20px 24px;
+  border-radius: var(--radius-8);
+  transition: var(--transition-short);
+}
+
+.card-badge {
+  background-color: var(--banner-background);
+  color: var(--white);
+  font-size: var(--fs-label);
+  font-weight: var(--weight-bold);
+  padding-inline: 6px;
+  border-radius: var(--radius-4);
+}
+.poster-box {
+  background: url('../images/poster-bg-icon.png');
+  aspect-ratio: 2 / 3;
+}
+.poster-box,
+.video-card {
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-position: center;
+  background-color: var(--banner-background);
+  border-radius: var(--radius-16);
+  overflow: hidden;
+}
+.title-wrapper {
+  margin-block-end: 24px;
+}
+.slider-list {
+  margin-inline: -20px;
+  overflow-x: overlay;
+  padding-block-end: 16px;
+  margin-block-end: -16px;
+}
+.slider-list::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+.slider-list:is(:hover, :focus-within)::-webkit-scrollbar-thumb {
+  background: var(--banner-background);
+}
+.slider-list::-webkit-scrollbar-button {
+  width: 20px;
+}
+
+.slider-list .slider-inner {
+  position: relative;
+  display: flex;
+  gap: 16px;
+}
+.slider-list .slider-inner::before,
+.slider-list .slider-inner::after {
+  content: '';
+  min-width: 4px;
+}
+.separator {
+  width: 4px;
+  height: 4px;
+  background-color: var(--white-alpha-20);
+  border-radius: var(--radius-8);
+}
+.video-card {
+  background: url('../images/video-bg-icon.png'), var(--white-alpha-20);
+  background-repeat: no-repeat;
+  background-position: center;
+  aspect-ratio: 16 / 9;
+  flex-shrink: 0;
+  max-width: 500px;
+  width: calc(100% - 40px);
+}
+.container::after,
+.search-modal::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background-image: linear-gradient(var(--bottom-overlay));
+  z-index: 1;
+  pointer-events: none;
+}
+
 /*-----------------------------------*\
   #HEADER
 \*-----------------------------------*/
@@ -279,6 +407,98 @@ body {
 /*-----------------------------------*\
   #SIDEBAR
 \*-----------------------------------*/
+
+.sidebar {
+  position: absolute;
+  background: var(--background);
+  top: 96px;
+  bottom: 0;
+  left: 0;
+  max-width: 340px;
+  width: 100%;
+  border-block-start: 1px solid var(--banner-background);
+  overflow-y: overlay;
+  z-index: 4;
+  transition: var(--transition-long);
+  transform: translateX(-100%);
+}
+
+.sidebar.active {
+  transform: translateX(0%);
+}
+
+.sidebar-inner {
+  display: grid;
+  gap: 20px;
+  padding-block: 36px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.sidebar:is(:hover, :focus-within)::-webkit-scrollbar-thumb {
+  background-color: var(--banner-background);
+}
+.sidebar::-webkit-scrollbar-button {
+  height: 16px;
+}
+
+.sidebar-list,
+.sidebar-footer {
+  padding-inline: 36px;
+}
+
+.sidebar-link {
+  color: var(--on-surface-variant);
+  transition: var(--transition-short);
+}
+
+.sidebar-link:is(:hover, :focus-visible) {
+  color: var(--on-background);
+}
+
+.sidebar-list {
+  display: grid;
+  gap: 8px;
+}
+
+.sidebar-list .title {
+  margin-block-end: 8px;
+}
+
+.sidebar-footer {
+  border-block-start: 1px solid var(--banner-background);
+  padding-block-start: 28px;
+  margin-block-start: 16px;
+}
+
+.copyright {
+  color: white;
+  margin-block-end: 20px;
+}
+
+.copyright a {
+  display: inline-block;
+}
+
+.overlay {
+  display: fixed;
+  top: 96px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: var(--background);
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition-short);
+  z-index: 3;
+}
+
+.overlay.active {
+  opacity: 0.5;
+  pointer-events: all;
+}
 
 /*-----------------------------------*\
   #HOME PAGE
