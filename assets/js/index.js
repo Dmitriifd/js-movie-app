@@ -79,10 +79,13 @@ const heroBanner = function ({ results: movieList }) {
     sliderItem.classList.add('slider-item');
     sliderItem.setAttribute('slider-item', '');
 
-    sliderItem.innerHTML = `
-      <img src="${imageBaseURL}w1280${backdrop_path}" alt="${title}" class="img-cover" loading=${
-      index == 0 ? 'eager' : 'lazy'
-    }>
+    sliderItem.innerHTML =`
+      <img
+        src="${imageBaseURL}w1280${backdrop_path}"
+        alt="${title}"
+        class="img-cover"
+        loading=${index == 0 ? 'eager' : 'lazy'}
+      />
 
       <div class="banner-content">
         <h2 class="heading">${title}</h2>
@@ -92,8 +95,14 @@ const heroBanner = function ({ results: movieList }) {
         </div>
         <p class="genre">${genreList.asString(genre_ids)}</p>
         <p class="banner-text">${overview}</p>
-        <a href="./detail.html" class="btn" onclick="getMovieDetail(${id})>
-          <img src="./assets/images/play_circle.png" width="24" height="24" aria-hidden="true" alt="play circle">
+        <a href="./detail.html" class="btn" onclick="getMovieDetail(${id})">
+          <img
+            src="./assets/images/play_circle.png"
+            width="24"
+            height="24"
+            aria-hidden="true"
+            alt="play circle"
+          />
           <span class="span">Watch Now</span>
         </a>
       </div>
