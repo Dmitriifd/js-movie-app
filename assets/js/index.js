@@ -91,9 +91,9 @@ const heroBanner = function ({ results: movieList }) {
         </div>
         <p class="genre">${genreList.asString(genre_ids)}</p>
         <p class="banner-text">${overview}</p>
-        <a href="./detail.html" class="btn">
-        <img src="./assets/images/play_circle.png" width="24" height="24" aria-hidden="true" alt="play circle">
-        <span class="span">Watch Now</span>
+        <a href="./detail.html" class="btn" onclick="getMovieDetail(${id})>
+          <img src="./assets/images/play_circle.png" width="24" height="24" aria-hidden="true" alt="play circle">
+          <span class="span">Watch Now</span>
         </a>
       </div>
     `;
@@ -170,6 +170,6 @@ const createMovieList = function ({ results: movieList }, title) {
     const movieCard = createMovieCard(movie);
     movieListElem.querySelector('.slider-inner').appendChild(movieCard);
   }
-  
+
   pageContent.appendChild(movieListElem);
 };
