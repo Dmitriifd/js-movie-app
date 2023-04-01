@@ -93,4 +93,35 @@ const heroBanner = function ({ results: movieList }) {
     banner.querySelector('.control-inner').appendChild(controlItem);
   }
   pageContent.appendChild(banner);
+
+  addHeroSlide();
+};
+
+// Hero slider
+
+const addHeroSlide = function () {
+  const sliderItems = document.querySelectorAll('[slider-item]');
+  const sliderControls = document.querySelectorAll('[slider-control]');
+
+  let lastSliderItem = sliderItems[0];
+  let lastSliderControl = sliderControls[0];
+
+  lastSliderControl.classList.add('active');
+  lastSliderItem.classList.add('active');
+
+  const sliderStart = function () {
+    lastSliderItem.classList.remove('active');
+    lastSliderControl.classList.remove('active');
+
+    // this == slider-control
+    sliderItems[Number(this.getAttribute('slider-control'))].classList.add(
+      'active'
+    );
+    this.classList.add('active');
+
+    lastSliderItem = sliderItems[Number(this.getAttribute('slider-control'))];
+    lastSliderControl = this;
+  };
+
+  addEventOnElements(sliderControls, 'click', sliderStart);
 };
