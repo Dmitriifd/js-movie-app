@@ -82,4 +82,3 @@ export function sidebar() {
     });
   };
 }
-console.log('ok');
